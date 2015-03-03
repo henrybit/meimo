@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.community.dao.UserCommunityRelationDao">
+	<resultMap type="UserCommunityRelation" id="userCommunityRelation">
+		<id property="id" column="id" />
+		<result property="userid" column="uid" />
+		<result property="communityid" column="cid" />
+		<result property="createTime" column="create_time" />
+		<result property="updateTime" column="update_time" />
+		<result property="dataStatus" column="data_status" />
+	</resultMap>
+	
+	<select id="getList" parameterType="int" resultMap="userCommunityRelation">
+		select * from user_community_relation where data_status=1 and cid=#{communityid}
+	</select>
+	<insert id="addOne" parameterType="UserCommunityRelation" useGeneratedKeys="true" keyProperty="id">
+		insert into user_community_relation (uid,cid,create_time,data_status) values
+		(#{userid},#{communityid},#{createTime},#{dataStatus})
+	</insert>
+	<update id="updateOne" parameterType="UserCommunityRelation">
+		update user_community_relation set uid=#{userid} where id=#{id}
+	</update>
+	<update id="dropOne" parameterType="UserCommunityRelation">
+		update user_community_relation set data_status=0 where id=#{id}
+	</update>
+	<delete id="deleteOne" parameterType="UserCommunityRelation">
+		delete from user_community_relation where id=#{id}
+	</delete>
+</mapper>

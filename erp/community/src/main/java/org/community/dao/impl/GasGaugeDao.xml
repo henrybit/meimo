@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.community.dao.GasGaugeDao">
+	<resultMap type="GasGauge" id="gasGauge">
+		<id property="id" column="id" />
+		<result property="no" column="no" />
+		<result property="communityid" column="community_id" />
+		<result property="type" column="type" />
+		<result property="num" column="num" />
+		<result property="operator" column="operator" />
+		<result property="year" column="year" />
+		<result property="month" column="month" />
+		<result property="createTime" column="create_time" />
+		<result property="updateTime" column="update_time" />
+		<result property="dataStatus" column="data_status" />
+	</resultMap>
+	
+	<select id="getList" parameterType="int" resultMap="gasGauge">
+		select * from gas_gauge where community_id=#{communityid} and data_status=1
+	</select>
+	<insert id="addOne" parameterType="GasGauge" useGeneratedKeys="true" keyProperty="id">
+		insert into gas_gauge values(no,community_id,type,num,operator,year,month,create_time,data_status) 
+		values(#{no},#{communityid},#{type},#{num},#{operator},#{year},#{month},#{createTime},#{dataStatus})
+	</insert>
+	<update id="updateOne" parameterType="GasGauge">
+		update gas_gauge set type=#{type},num=#{num},operator=#{operator},
+		year=#{year},month=#{month} where id=#{id}
+	</update>
+	<update id="dropOne" parameterType="GasGauge">
+		update gas_gauge set data_status=0 where id=#{id}
+	</update>
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.community.dao.FeeItemDao">
+	<resultMap type="FeeItem" id="feeItem">
+		<id property="id" column="id" />
+		<result property="feeName" column="fee_name"/>
+		<result property="feeValue" column="fee_value"/>
+		<result property="communityId" column="community_id"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="dataStatus" column="data_status"/>
+	</resultMap>
+	
+	<select id="getAllFeeItemByCommunityId" parameterType="int" resultMap="feeItem">
+		select * from fee_item where community_id=#{communityId}
+	</select>
+	<insert id="insertFeeItem" parameterType="FeeItem">
+		insert into fee_item(fee_name,fee_value,community_id,create_time,data_status) 
+		values(#{feeName},#{feeValue},#{communityId},#{createTime},#{dataStatus})
+	</insert>
+	<update id="updateFeeItem" parameterType="FeeItem">
+		update fee_item set fee_name=#{feeName},fee_value=#{feeValue} where id=#{id}
+	</update>
+	<update id="dropFeeItem" parameterType="FeeItem">
+		update fee_item set data_status=0 where id=#{id}
+	</update>
+	<delete id="deleteFeeItem" parameterType="FeeItem">
+		delete from fee_item where id=#{id}
+	</delete>
+</mapper>

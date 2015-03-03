@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../css/fee.css" rel="stylesheet" type="text/css">
+<link href="../css/tablecloth.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../js/tablecloth.js"></script>
+<script type="text/javascript" src="../js/fee.js"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+<title>收费管理</title>
+</head>
+<body style="width: 1000px; margin: 15px auto 0px;" onclick="parent.hidenSubMenu(this)">
+	<div class="fee-top">
+		<div class="fee-top-search">
+			<input class="input-noselected" type="text" value="费用名或费用编号" style="float:left;width:200px" onclick="search_input(this)"/>
+			<a href="#" style="float:left"><img src="../image/search_btn.png" width="24px" heigth="24px" title="搜索" /></a>
+		</div>
+		<div style="margin-left: 20px;float: left;"><a href="#"><img src="../image/add_new.png" title="新增" width="28px" heigth="28px" /></a></div>
+		<div class="fee-page-controller">
+			<a href="#"><span>首页</span></a>
+			<a href="#">上一页</a>
+			<a href="#">下一页</a>
+			<span style="border-right: 1px dashed rgb(0, 0, 0); margin-left: 6px; padding-right: 6px;">共24项</span>
+			<span>1/8</span>
+		</div>
+		<div style="clear:both"></div>
+	</div>
+	<div class="fee-body">
+		<div class="fee-left">
+			<!--快捷菜单-->
+			
+		</div>
+		<div class="fee-right">
+		<table class="hovertable">
+			<tr>
+				<th>序列号</th><th>费用项名</th><th>费用公式</th><th>费用单价1(元)</th><th>费用单价2(元)</th><th>费用单价3(元)</th><th>操作</th>
+			</tr>
+			<tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+				<td>1</td><td>水费</td><td>(x*0.4)+(x-400)*0.6</td><td>0.4</td><td>0.6</td><td>-</td>
+				<td>
+					<span style="font-size: 14px; color: blue; font-family: arial; font-weight: bold;cursor: pointer;">编辑</span>
+					<span style="font-size: 14px; color: red; font-family: arial; font-weight: bold;cursor: pointer;">删除</span>
+				</td>
+			</tr>
+			<tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+				<td>2</td><td>电费</td><td>(x*1)+(x-300)*1.2+(x-500)*1.5</td><td>1</td><td>1.2</td><td>1.5</td>
+				<td>
+					<span style="font-size: 14px; color: blue; font-family: arial; font-weight: bold;cursor: pointer;">编辑</span>
+					<span style="font-size: 14px; color: red; font-family: arial; font-weight: bold;cursor: pointer;">删除</span>
+				</td>
+			</tr>
+			<tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+				<td>2</td><td>电费</td><td>(x*1)+(x-300)*1.2+(x-500)*1.5</td><td>1</td><td>1.2</td><td>1.5</td>
+				<td>
+					<span style="font-size: 14px; color: blue; font-family: arial; font-weight: bold;cursor: pointer;">编辑</span>
+					<span style="font-size: 14px; color: red; font-family: arial; font-weight: bold;cursor: pointer;">删除</span>
+				</td>
+			</tr>
+			<tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+				<td>2</td><td>电费</td><td>(x*1)+(x-300)*1.2+(x-500)*1.5</td><td>1</td><td>1.2</td><td>1.5</td>
+				<td>
+					<span style="font-size: 14px; color: blue; font-family: arial; font-weight: bold;cursor: pointer;">编辑</span>
+					<span style="font-size: 14px; color: red; font-family: arial; font-weight: bold;cursor: pointer;">删除</span>
+				</td>
+			</tr>
+			<tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+				<td>2</td><td>电费</td><td>(x*1)+(x-300)*1.2+(x-500)*1.5</td><td>1</td><td>1.2</td><td>1.5</td>
+				<td>
+					<span style="font-size: 14px; color: blue; font-family: arial; font-weight: bold;cursor: pointer;">编辑</span>
+					<span style="font-size: 14px; color: red; font-family: arial; font-weight: bold;cursor: pointer;">删除</span>
+				</td>
+			</tr>
+			<tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+				<td>2</td><td>电费</td><td>(x*1)+(x-300)*1.2+(x-500)*1.5</td><td>1</td><td>1.2</td><td>1.5</td>
+				<td>
+					<span style="font-size: 14px; color: blue; font-family: arial; font-weight: bold;cursor: pointer;">编辑</span>
+					<span style="font-size: 14px; color: red; font-family: arial; font-weight: bold;cursor: pointer;">删除</span>
+				</td>
+			</tr>
+			<tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+				<td>2</td><td>电费</td><td>(x*1)+(x-300)*1.2+(x-500)*1.5</td><td>1</td><td>1.2</td><td>1.5</td>
+				<td>
+					<span style="font-size: 14px; color: blue; font-family: arial; font-weight: bold;cursor: pointer;">编辑</span>
+					<span style="font-size: 14px; color: red; font-family: arial; font-weight: bold;cursor: pointer;">删除</span>
+				</td>
+			</tr>
+			<tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+				<td>2</td><td>电费</td><td>(x*1)+(x-300)*1.2+(x-500)*1.5</td><td>1</td><td>1.2</td><td>1.5</td>
+				<td>
+					<span style="font-size: 14px; color: blue; font-family: arial; font-weight: bold;cursor: pointer;">编辑</span>
+					<span style="font-size: 14px; color: red; font-family: arial; font-weight: bold;cursor: pointer;">删除</span>
+				</td>
+			</tr>
+			<tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+				<td>2</td><td>电费</td><td>(x*1)+(x-300)*1.2+(x-500)*1.5</td><td>1</td><td>1.2</td><td>1.5</td>
+				<td>
+					<span style="font-size: 14px; color: blue; font-family: arial; font-weight: bold;cursor: pointer;">编辑</span>
+					<span style="font-size: 14px; color: red; font-family: arial; font-weight: bold;cursor: pointer;">删除</span>
+				</td>
+			</tr>
+			<tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+				<td>2</td><td>电费</td><td>(x*1)+(x-300)*1.2+(x-500)*1.5</td><td>1</td><td>1.2</td><td>1.5</td>
+				<td>
+					<span style="font-size: 14px; color: blue; font-family: arial; font-weight: bold;cursor: pointer;">编辑</span>
+					<span style="font-size: 14px; color: red; font-family: arial; font-weight: bold;cursor: pointer;">删除</span>
+				</td>
+			</tr>
+			<tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+				<td>2</td><td>电费</td><td>(x*1)+(x-300)*1.2+(x-500)*1.5</td><td>1</td><td>1.2</td><td>1.5</td>
+				<td>
+					<span style="font-size: 14px; color: blue; font-family: arial; font-weight: bold;cursor: pointer;">编辑</span>
+					<span style="font-size: 14px; color: red; font-family: arial; font-weight: bold;cursor: pointer;">删除</span>
+				</td>
+			</tr>
+			<tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+				<td>2</td><td>电费</td><td>(x*1)+(x-300)*1.2+(x-500)*1.5</td><td>1</td><td>1.2</td><td>1.5</td>
+				<td>
+					<span style="font-size: 14px; color: blue; font-family: arial; font-weight: bold;cursor: pointer;">编辑</span>
+					<span style="font-size: 14px; color: red; font-family: arial; font-weight: bold;cursor: pointer;">删除</span>
+				</td>
+			</tr>
+			<tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+				<td>2</td><td>电费</td><td>(x*1)+(x-300)*1.2+(x-500)*1.5</td><td>1</td><td>1.2</td><td>1.5</td>
+				<td>
+					<span style="font-size: 14px; color: blue; font-family: arial; font-weight: bold;cursor: pointer;">编辑</span>
+					<span style="font-size: 14px; color: red; font-family: arial; font-weight: bold;cursor: pointer;">删除</span>
+				</td>
+			</tr>
+		</table>
+		</div>
+	</div>
+	<div class="fee-overflow" style="display:none;">
+	  <div class="fee-ops">
+	    <a href="#" style="float:left;"><img src="../image/yes.png" title="保存" width="24px" height="24px"></img></a>
+	    <span>水费-调整</span>
+	    <a href="#" style="float:right;"><img src="../image/no.png" title="取消" width="24px" height="24px"></img></a>
+	    <div style="clear:both"></div>
+	  </div>
+	  <div class="fee-add-content">
+	    <lable>费用项名：</lable>
+	    <input value="" type="text">
+	    <lable>费用公式：</lable>
+	    <input value="" type="text">
+	    <lable>费用类型：</lable>
+	    <input value="" type="text">
+	    <lable>费用单价1：</lable>
+	    <input value="" type="text">
+	    <lable>费用单价2：</lable>
+	    <input value="" type="text">
+	    <lable>费用单价3：</lable>
+	    <input value="" type="text">
+	  </div>
+	</div>
+	<div class="fee-footer">
+		
+	</div>
+</body>
+</html>

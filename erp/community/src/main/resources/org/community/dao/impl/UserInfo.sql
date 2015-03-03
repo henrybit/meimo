@@ -1,0 +1,21 @@
+CREATE TABLE `user_info` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
+  `user_name` varchar(128) COLLATE utf8_bin DEFAULT NULL COMMENT '用户姓名',
+  `user_status` int(2) DEFAULT NULL COMMENT '用户状态：1-在住，2-已迁',
+  `user_type` int(4) DEFAULT NULL COMMENT '用户类型：1-业主，2-租户',
+  `sex` tinyint(4) DEFAULT NULL COMMENT '用户性别：1-男，2-女',
+  `card_type` int(11) DEFAULT NULL COMMENT '证件类型：1-身份证，2-护照，3-驾照，4-社保卡',
+  `card_no` varchar(256) CHARACTER SET utf8 DEFAULT NULL COMMENT '用户证件号',
+  `birth_day` datetime DEFAULT NULL COMMENT '用户出生日期',
+  `age` int(11) DEFAULT NULL COMMENT ' 用户年龄(计算值)',
+  `head_image` varchar(1024) CHARACTER SET utf8 DEFAULT NULL COMMENT '用户头像照片',
+  `room_info` varchar(256) CHARACTER SET utf8 DEFAULT NULL COMMENT '房间信息',
+  `hometown` varchar(512) CHARACTER SET utf8 DEFAULT NULL COMMENT '家乡（籍贯）',
+  `telephone` varchar(24) CHARACTER SET utf8 DEFAULT NULL COMMENT '联系电话',
+  `address` varchar(1024) CHARACTER SET utf8 DEFAULT NULL COMMENT '联系地址',
+  `description` varchar(1024) CHARACTER SET utf8 DEFAULT NULL COMMENT '备注描述',
+  `create_time` datetime DEFAULT NULL COMMENT '数据创建的时间',
+  `update_time` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '数据更新的时间',
+  `data_status` tinyint(4) DEFAULT 1 COMMENT '数据状态：0-无效，1-有效',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin

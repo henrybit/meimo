@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.community.dao.UserInfoDao">
+	<resultMap type="UserInfo" id="userInfo">
+		<id property="id" column="id" />
+		<result property="userName" column="user_name" />
+		<result property="userStatus" column="user_status" />
+		<result property="userType" column="user_type" />
+		<result property="sex" column="sex" />
+		<result property="cardType" column="card_type" />
+		<result property="cardNo" column="card_no" />
+		<result property="birthDay" column="birth_day" />
+		<result property="age" column="age" />
+		<result property="headImage" column="head_image" />
+		<result property="roominfo" column="room_info" />
+		<result property="hometown" column="hometown" />
+		<result property="telephone" column="telephone" />
+		<result property="address" column="address" />
+		<result property="description" column="description" />
+		<result property="createTime" column="create_time" />
+		<result property="updateTime" column="update_time" />
+		<result property="dataStatus" column="data_status" />
+	</resultMap>
+	<resultMap type="ComplexUserInfo" id="complexUserInfo">
+		<id property="id" column="id" />
+		<result property="userName" column="user_name" />
+		<result property="userStatus" column="user_status" />
+		<result property="userType" column="user_type" />
+		<result property="sex" column="sex" />
+		<result property="cardType" column="card_type" />
+		<result property="cardNo" column="card_no" />
+		<result property="birthDay" column="birth_day" />
+		<result property="age" column="age" />
+		<result property="headImage" column="head_image" />
+		<result property="roominfo" column="room_info" />
+		<result property="hometown" column="hometown" />
+		<result property="telephone" column="telephone" />
+		<result property="address" column="address" />
+		<result property="description" column="description" />
+		<result property="createTime" column="create_time" />
+		<result property="updateTime" column="update_time" />
+		<result property="dataStatus" column="data_status" />
+		<result property="communityid" column="cid" />
+	</resultMap>
+	
+	<select id="getList" parameterType="Map" resultMap="userInfo">
+		select * from user_info where data_status=1
+		<if test="uids!=null">  
+        and id in  
+        <foreach item="item" index="index" collection="uids" open="("  
+            separator="," close=")">  
+            #{item}  
+        </foreach>  
+    	</if>  
+	</select>
+	<select id="getById" parameterType="long" resultMap="userInfo">
+		select * from user_info where id=#{id}
+	</select>
+	<select id="getListByMap" parameterType="Map" resultMap="userInfo">
+		select ui.* from user_community_relation ucr join user_info ui on
+		ucr.uid=ui.id and ucr.data_status=1 and ui.data_status=1 and ucr.cid=#{communityid}
+		<if test="islike!=null">
+			and (
+			<if test="userName!=null"> 
+			ui.user_name like CONCAT('%',#{userName},'%')
+			</if>
+			<if test="cardNo!=null">
+			or ui.card_no like CONCAT('%',#{cardNo},'%')
+			</if>
+			<if test="roominfo!=null">
+			or ui.room_info like CONCAT('%','${roominfo}','%')
+			</if>
+			<if test="hometown!=null">
+			or ui.hometown like CONCAT('%','${hometown}','%')
+			</if>
+			<if test="telephone!=null">
+			or ui.telephone like CONCAT('%','${telephone}','%')
+			</if>
+			)
+		</if>
+		order by ucr.id asc
+	</select>
+	<insert id="addOne" parameterType="UserInfo" useGeneratedKeys="true" keyProperty="id">
+		insert into user_info (user_name,user_status,user_type,sex,card_type,card_no,birth_day,age,
+		head_image,room_info,hometown,telephone,address,description,create_time,data_status) 
+		values(#{userName},#{userStatus},#{userType},#{sex},#{cardType},#{cardNo},#{birthDay},#{age},
+		#{headImage},#{roominfo},#{hometown},#{telephone},#{address},#{description},#{createTime},#{dataStatus})
+	</insert>
+	<update id="updateOne" parameterType="UserInfo">
+		update user_info set user_name=#{userName},user_status=#{userStatus},user_type=#{userType},
+		sex=#{sex},card_type=#{cardType},card_no=#{cardNo},birth_day=#{birthDay},age=#{age},head_image=#{headImage},
+		room_info=#{roominfo},hometown=#{hometown},telephone=#{telephone},address=#{address},description=#{description} where id=#{id}
+	</update>
+	<update id="dropOne" parameterType="UserInfo">
+		update user_info set data_status=0 where id=#{id}
+	</update>
+	<delete id="deleteOne" parameterType="UserInfo">
+		delete from user_info where id=#{id}
+	</delete>
+</mapper>

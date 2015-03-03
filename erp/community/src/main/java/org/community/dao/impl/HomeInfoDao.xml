@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.community.dao.HomeInfoDao">
+	<resultMap type="HomeInfo" id="homeInfo">
+		<id property="id" column="id" />
+		<result property="communityid" column="community_id" />
+		<result property="homeno" column="home_no" />
+		<result property="buildingNo" column="building_no" />
+		<result property="type" column="type" />
+		<result property="buildArea" column="build_area" />
+		<result property="usedArea" column="used_area" />
+		<result property="poolArea" column="pool_area" />
+		<result property="structPic" column="struct_pic" />
+		<result property="buildedYear" column="builded_year" />
+		<result property="age" column="age" />
+		<result property="description" column="description" />
+		<result property="createTime" column="create_time" />
+		<result property="updateTime" column="update_time" />
+		<result property="dataStatus" column="data_status" />
+	</resultMap>
+	<select id="getList" parameterType="int" resultMap="homeInfo">
+		select * from home_info where data_status=1 and community_id=#{communityid}
+	</select>
+	<select id="getListByUid" parameterType="Map" resultMap="homeInfo">
+		select * from home_info where data_status=1 and community_id=#{communityid}
+	</select>
+	<select id="getById" parameterType="long" resultMap="homeInfo">
+		select * from home_info where id=#{id}
+	</select>
+	<insert id="addOne" parameterType="HomeInfo" useGeneratedKeys="true" keyProperty="id">
+		insert into home_info (community_id,home_no,building_no,type,build_area,
+		used_area,pool_area,struct_pic,builded_year,age,description,create_time,data_status) 
+		values(#{communityid},#{homeno},#{buildingNo},#{type},#{buildArea},#{usedArea},#{poolArea},
+		#{structPic},#{buildedYear},#{age},#{description},#{createTime},#{dataStatus})
+	</insert>
+	<update id="updateOne" parameterType="HomeInfo">
+		update home_info set home_no=#{homeno},building_no=#{buildingNo},
+		type=#{type},build_area=#{buildArea},used_area=#{usedArea},pool_area=#{poolArea},
+		struct_pic=#{structPic},builded_year=#{buildedYear},age=#{age},
+		description=#{description} where id=#{id}
+	</update>
+	<update id="dropOne" parameterType="HomeInfo">
+		update home_info set data_status=0 where id=#{id}
+	</update>
+	<delete id="deleteOne" parameterType="HomeInfo">
+		delete from home_info where id=#{id}
+	</delete>
+</mapper>

@@ -1,0 +1,43 @@
+@CHARSET "UTF-8";
+ul {
+	list-style: none outside none;
+}
+dd,dt {
+	margin:0px;
+}
+.footer {
+	margin-top:20px;
+}
+.footer a{
+	color: black;
+	font-family: arial;
+}
+.copyright{
+	text-align: center;
+	border-top: 3px solid steelblue;
+	padding-top: 20px;
+}
+.copyright span{
+	color: steelblue;
+}
+.copyright a{
+	color: #00a2ca;
+}
+.copyright a:hover{
+	color: #00a2ca;
+	text-decoration: underline;
+}
+
+.float_windows {
+	display:none;
+}
+
+.float_windows_show {
+	display:block;
+	position: absolute;
+	z-index: 30001;
+	opacity: 1;
+	visibility: visible;
+	top:15%;
+	left:40%;
+}

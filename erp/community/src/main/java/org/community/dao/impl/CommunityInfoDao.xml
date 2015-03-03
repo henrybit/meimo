@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.community.dao.CommunityInfoDao">
+	<resultMap type="CommunityInfo" id="communityInfo">
+		<id property="id" column="id" />
+		<result property="communityName" column="community_name" />
+		<result property="developerName" column="developer_name" />
+		<result property="propertyId" column="property_id" />
+		<result property="address" column="address" />
+		<result property="province" column="province" />
+		<result property="city" column="city" />
+		<result property="county" column="county" />
+		<result property="buildArea" column="build_area" />
+		<result property="usedArea" column="used_area" />
+		<result property="coveredArea" column="covered_area" />
+		<result property="roadArea" column="road_area" />
+		<result property="greenArea" column="green_area" />
+		<result property="description" column="description" />
+		<result property="createTime" column="create_time" />
+		<result property="updateTime" column="update_time" />
+		<result property="dataStatus" column="data_status" />
+	</resultMap>
+	
+	<select id="getList" resultMap="communityInfo">
+		select * from community_info where data_status=1
+	</select>
+	<select id="getListByPid" parameterType="int" resultMap="communityInfo">
+		select * from community_info where data_status=1 and property_id=#{propertyid}
+	</select>
+	<select id="getById" parameterType="int" resultMap="communityInfo">
+		select * from community_info where id=#{id}
+	</select>
+	<insert id="addOne" parameterType="CommunityInfo" useGeneratedKeys="true" keyProperty="id">
+		insert into community_info (community_name,developer_name,property_id,address,province,city,
+		county,build_area,used_area,covered_area,road_area,green_area,description,create_time,data_status) 
+		values(#{communityName},#{developerName},#{propertyId},#{address},#{province},#{city},
+		#{county},#{buildArea},#{usedArea},#{coveredArea},#{roadArea},#{greenArea},#{description},#{createTime},#{dataStatus})
+	</insert>
+	<update id="updateOne" parameterType="CommunityInfo">
+		update community_info set community_name=#{communityName},developer_name=#{developerName},property_id=#{propertyId},
+		address=#{address},province=#{province},city=#{city},county=#{county},build_area=#{buildArea},used_area=#{usedArea},
+		covered_area=#{coveredArea},road_area=#{roadArea},green_area=#{greenArea},description=#{description} where id=#{id}
+	</update>
+	<update id="dropOne" parameterType="CommunityInfo">
+		update community_info set data_status=0 where id=#{id}
+	</update>
+	<delete id="deleteOne" parameterType="CommunityInfo">
+		delete from community_info where id=#{id}
+	</delete>
+</mapper>

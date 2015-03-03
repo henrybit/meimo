@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- 数据源 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/> 
+        <property name="url" value="jdbc:mysql://182.92.97.125:3306/erp?useUnicode=true&amp;characterEncoding=UTF-8" />
+        <property name="username" value="root" /> 
+        <property name="password" value="henrybit1987" /> 
+        <property name="initialSize" value="20" />
+        <property name="maxIdle" value="2" />
+        <property name="maxWaitMillis" value="120000" />
+	</bean>
+	<!-- 事务 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+  		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- mybatis的session工厂 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+  		<property name="dataSource" ref="dataSource" />
+  		<property name="configLocation" value="classpath:mybatis-config.xml" />
+	</bean>
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+  		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
+	<bean id="sqlSessionBatch" class="org.mybatis.spring.SqlSessionTemplate">
+  		<constructor-arg index="0" ref="sqlSessionFactory" />
+  		<constructor-arg index="1" value="BATCH" />
+	</bean>
+	
+	<!-- Dao -->
+	<!-- 
+	<bean id="userDao" class="org.community.dao.impl.UserDaoImpl">
+ 		<property name="sqlSession" ref="sqlSession" />
+	</bean>
+	-->
+	
+	<!-- Service -->
+	<!--
+	<bean id="userService" class="org.community.service.impl.UserServiceImpl">
+		<property name="userDao" ref="userDao" />
+	</bean>
+	 -->
+</beans>

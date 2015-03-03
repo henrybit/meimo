@@ -1,0 +1,50 @@
+@CHARSET "UTF-8";
+.header {
+	height: 65px;
+	width: 100%;
+	margin: 0 auto;
+	background: #fff;
+	border-bottom: 1px solid #ADADAD;
+	padding:0;
+}
+.logo {
+	
+}
+.content_body {
+	width:1024px;
+	margin:0 auto;
+	padding-top:30px;
+}
+
+.register_content {
+	border: 1px solid #ddd;
+	margin: 0 auto;
+	margin-top: 30px;
+	width: 800px;
+	text-align: center;
+}
+.register_content {
+	font-family: arial;
+	font-size: 12px;
+}
+.register_content input {
+	width:100%;
+}
+.register_form_table tr {
+	padding-top:8px;
+	padding-bottom:8px;
+}
+.register_form_table td {
+	width:400px;
+}
+.register_form_table tr td span {
+	font-size:16px;
+}
+
+.register_form_table {
+	width: 700px;
+	padding-left: 50px;
+	margin-left: 50px;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.community.dao.WaterGaugeDao">
+	<resultMap type="WaterGauge" id="waterGauge">
+		<id property="id" column="id" />
+		<result property="no" column="no" />
+		<result property="communityid" column="community_id" />
+		<result property="type" column="type" />
+		<result property="num" column="num" />
+		<result property="operator" column="operator" />
+		<result property="year" column="year" />
+		<result property="month" column="month" />
+		<result property="createTime" column="create_time" />
+		<result property="updateTime" column="update_time" />
+		<result property="dataStatus" column="data_status" />
+	</resultMap>
+	<resultMap type="ComplexWaterGauge" id="complexWaterGauge">
+		<id property="id" column="id" />
+		<result property="no" column="no" />
+		<result property="communityid" column="community_id" />
+		<result property="type" column="type" />
+		<result property="num" column="num" />
+		<result property="operator" column="operator" />
+		<result property="year" column="year" />
+		<result property="month" column="month" />
+		<result property="createTime" column="create_time" />
+		<result property="updateTime" column="update_time" />
+		<result property="dataStatus" column="data_status" />
+		<result property="buildingNo" column="building_no" />
+		<result property="homeNo" column="home_no" />
+	</resultMap>
+	
+	<select id="getList" parameterType="int" resultMap="waterGauge">
+		select * from water_gauge where community_id=#{communityid} and data_status=1
+	</select>
+	<select id="getById" parameterType="long" resultMap="waterGauge">
+		select * from water_gauge where id=#{id}
+	</select>
+	<select id="queryListComplex" parameterType="Map" resultMap="complexWaterGauge">
+		select * from (
+		select wg.*, hi.home_no, hi.building_no from home_gauge_relation hgr, home_info hi, water_gauge wg 
+		where hgr.home_id=hi.id and hgr.water_gauge_id=wg.id and hgr.data_status=1 and hi.data_status=1 and wg.data_status=1) a 
+		where 1=1
+		<if test="homeNo!=null">and (home_no like CONCAT('%',#{homeNo},'%') </if>
+		<if test="buildingNo!=null">or building_no like CONCAT('%',#{buildingNo},'%'))</if>
+		<if test="type!=null">and type=${type}</if>
+		<if test="year!=null">and year=${year}</if>
+		<if test="month!=null">and month=${month}</if>
+		<if test="orderByTimeDesc!=null">order by create_time desc</if>
+		<if test="orderByTimeAsc!=null">order by create_time asc</if>
+	</select>
+	
+	<insert id="addOne" parameterType="WaterGauge" useGeneratedKeys="true" keyProperty="id">
+		insert into water_gauge (no,community_id,type,num,operator,year,month,create_time,data_status) 
+		values(#{no},#{communityid},#{type},#{num},#{operator},#{year},#{month},#{createTime},#{dataStatus})
+	</insert>
+	<update id="updateOne" parameterType="WaterGauge">
+		update water_gauge set type=#{type},num=#{num},operator=#{operator},
+		year=#{year},month=#{month} where id=#{id}
+	</update>
+	<update id="dropOne" parameterType="WaterGauge">
+		update water_gauge set data_status=0 where id=#{id}
+	</update>
+	<delete id="deleteOne" parameterType="WaterGauge">
+		delete from water_gauge where id=#{id}
+	</delete>
+</mapper>

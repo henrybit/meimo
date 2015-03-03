@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.community.dao.PropertyInfoDao">
+	<resultMap type="PropertyInfo" id="propertyInfo">
+		<id property="id" column="id" />
+		<result property="propertyName" column="property_name" />
+		<result property="loginName" column="login_name" />
+		<result property="password" column="password" />
+		<result property="email" column="email" />
+		<result property="status" column="status" />
+		<result property="telephone" column="telephone" />
+		<result property="description" column="description" />
+		<result property="createTime" column="create_time" />
+		<result property="updateTime" column="update_time" />
+		<result property="dataStatus" column="data_status" />
+	</resultMap>
+	
+	<select id="getById" parameterType="int" resultMap="propertyInfo">
+		select * from property_info where id=#{id} and data_status=1
+	</select>
+	<select id="getByLogin" parameterType="PropertyInfo" resultMap="propertyInfo">
+		select * from property_info where data_status=1 and login_name=#{loginName} and password=#{password}
+	</select>
+	<insert id="addOne" parameterType="PropertyInfo" useGeneratedKeys="true" keyProperty="id">
+		insert into property_info (property_name,login_name,password,telephone,email,description,create_time,data_status) 
+		values(#{propertyName},#{loginName},#{password},#{telephone},#{email},#{description},#{createTime},#{dataStatus})
+	</insert>
+	<update id="updateOne" parameterType="PropertyInfo">
+		update property_info set property_name=#{propertyName},telephone=#{telephone},description=#{description} where id=#{id}
+	</update>
+	<update id="dropOne" parameterType="PropertyInfo">
+		update property_info set data_status=0 where id=#{id}
+	</update>
+	<delete id="deleteOne" parameterType="PropertyInfo">
+		delete from property_info where id=#{id}
+	</delete>
+</mapper>

@@ -1,0 +1,53 @@
+.home-gauge-top div {
+    display: block;
+    height: 24px;
+}
+.home-gauge-top-search {
+	float: left;
+}
+.home-page-controller {
+    float: right;
+    padding-top: 4px;
+}
+.home-gauge-top-search a{
+	border: 1px solid #d0d0d0;
+	border-left: 0px; 
+    display: block;
+    float: right;
+    height: 24px;
+    text-align: center;
+    width: 24px;
+}
+.home-gauge-top-search .input-onclick {
+    color: #272727;
+    height: 14px;
+}
+.home-gauge-top-search .input-noselected {
+    color: #bebebe;
+    height: 14px;
+}
+.home-gauge-top-search input {
+    float: left;
+}
+.home-gauge-top-search lable, input {
+    float: left;
+    font-family: "Microsoft YaHei","微软雅黑","SimSun","宋体";
+    font-size: 14px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    width: 180px;
+}
+
+.home-page-controller a {
+    color: #00a2ca;
+    font-family: arial;
+    font-size: 14px;
+}
+.home-page-controller a {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px outset #ccc;
+    color: #00a2ca;
+    font-family: arial;
+    font-size: 14px;
+    text-decoration: none;
+}

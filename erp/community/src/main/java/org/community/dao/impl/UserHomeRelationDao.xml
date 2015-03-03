@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.community.dao.UserHomeRelationDao">
+	<resultMap type="UserHomeRelation" id="userHomeRelation">
+		<id property="id" column="id" />
+		<result property="userid" column="uid" />
+		<result property="homeid" column="hid" />
+		<result property="communityid" column="cid" />
+		<result property="type" column="type" />
+		<result property="createTime" column="create_time" />
+		<result property="updateTime" column="update_time" />
+		<result property="dataStatus" column="data_status" />
+	</resultMap>
+	
+	<select id="getList" parameterType="int" resultMap="userHomeRelation">
+		select * from user_home_relation where data_status=1 and cid=#{communityid}
+	</select>
+	<insert id="addOne" parameterType="UserHomeRelation" useGeneratedKeys="true" keyProperty="id">
+		insert into user_home_relation (uid,hid,cid,create_time,data_status) values
+		(#{userid},#{homeid},#{communityid},#{createTime},#{dataStatus})
+	</insert>
+	<update id="updateOne" parameterType="UserHomeRelation">
+		update user_home_relation set uid=#{userid},hid=#{homeid} where id=#{id}
+	</update>
+	<update id="dropOne" parameterType="UserHomeRelation">
+		update user_home_relation set data_status=0 where id=#{id}
+	</update>
+	<delete id="deleteOne" parameterType="UserHomeRelation">
+		delete from user_home_relation where id=#{id}
+	</delete>
+</mapper>
